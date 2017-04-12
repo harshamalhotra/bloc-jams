@@ -1,4 +1,4 @@
- // Example Album
+ 
  var albumPicasso = {
      title: 'The Colors',
      artist: 'Pablo Picasso',
@@ -14,7 +14,7 @@
      ]
  };
  
- // Another Example Album
+ 
  var albumMarconi = {
      title: 'The Telephone',
      artist: 'Guglielmo Marconi',
@@ -30,6 +30,22 @@
      ]
  };
 
+
+ var albumChainsmokers = {
+     title: 'Memories...Do Not Open',
+     artist: 'Alex Pall and Andrew Taggart',
+     label: 'Disruptor and Columbia',
+     year: '1909',
+     albumArtUrl: 'assets/images/album_covers/11.png',
+     songs: [
+         { title: 'Paris', duration: '3:41' },
+         { title: 'Something Just Like This', duration: '4:07' },
+         { title: 'The One', duration: '2:57'},
+         { title: 'Bloodstream', duration: '3:44' },
+         { title: 'Something Just Like This', duration: '4:07'}
+     ]
+ };
+
 var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -42,13 +58,15 @@ var createSongRow = function(songNumber, songName, songLength) {
      return template;
  };
 
-var setCurrentAlbum = function(album) {
-     // #1
-     var albumTitle = document.getElementsByClassName('album-view-title')[0];
+ // #1
+    var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+var setCurrentAlbum = function(album) {
+     
  
      // #2
      albumTitle.firstChild.nodeValue = album.title;
@@ -67,4 +85,16 @@ var setCurrentAlbum = function(album) {
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+
+     var a=[albumPicasso,albumMarconi,albumChainsmokers];
+     var i=0;
+     albumImage.addEventListener("click",function(event){
+     	setCurrentAlbum(a[i]);
+     	i++;
+     	if(i==a.length){
+     		i=0;
+     	}
+     });
+
+
  };

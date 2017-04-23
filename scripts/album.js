@@ -82,9 +82,34 @@ var setCurrentAlbum = function(album) {
          albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
      }
  };
- 
+ var songListContainer=document.getElementsByClassName("album-view-song-list")[0];
+// Album button templates
+var songRows=document.getElementsByClassName('album-view-song-item');
+
+var playButtonTemplate='<a class="album-song-button"><span class="ion-play"></span></a>';
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     // #1
+    songListContainer.addEventListener("mouseover",function(event){
+      
+
+      if(event.target.parentElement.className==="album-view-song-item"){
+        event.target.parentElement.querySelector(".song-item-number").innerHTML=playButtonTemplate;
+
+      }
+    });
+
+
+     for (var i = 0; i < songRows.length; i++) {
+         songRows[i].addEventListener('mouseleave', function(event) {
+             // Revert the content back to the number
+             // Selects first child element, which is the song-item-number element
+             this.children[0].innerHTML = this.children[0].getAttribute('song-item-number');
+             console.log("The number is "+this.children[0].innerHTML +" and "+this.children[0].getAttribute('data-item-number'));
+         });
+     }
+    }
+
 
      var a=[albumPicasso,albumMarconi,albumChainsmokers];
      var i=0;
@@ -97,4 +122,4 @@ var setCurrentAlbum = function(album) {
      });
 
 
- };
+

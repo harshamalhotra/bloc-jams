@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sample template</title>
+  <style>
+    .parent-two,
+.parent-one,
+.child { 
+    font-family: Helvetica, sans-serif;
+    border: 3px solid rgb(63,102,135);
+}
+
+.parent-two {
+    position: relative;
+    height: 225px;
+    width: 350px;
+}
+
+.parent-two .parent-one {
+    position: absolute;
+    height: 150px;
+    width: 275px;
+    bottom: 16px;
+    left: 50%;
+    -webkit-transform:translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.parent-two .parent-one .child { 
+    position: absolute;
+    height: 100px;
+    width: 200px;
+    bottom: 16px;
+    left: 50%;
+    -webkit-transform:translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.blue {
+    border: 3px solid rgb(152,177,197);
+}
+
+.red {
+    border: 3px solid rgb(196,67,62);
+}
+  </style>
+</head>
+<body>
+  <section class="parent-two blue">
+    Grandparent
+    <div class="parent-one blue">
+      First Parent
+      <div class="child blue">
+        Child Element
+      </div>
+    </div>
+  </section>
+  <section class="parent-two red">
+    Grandparent
+    <div class="parent-one red">
+      First Parent
+      <div class="child red">
+        Child Element
+      </div>
+    </div>
+  </section>
+
+<script type="text/javascript">
+ document.querySelector('.child.red').addEventListener('click',function(event){
+  alert(this.className);
+ },true);
+
+  document.querySelector('.parent-one.red').addEventListener('click',function(event){
+  alert(this.className);
+ },true);
+
+   document.querySelector('.parent-two.red').addEventListener('click',function(event){
+  alert(this.className);
+ },true);
+
+   document.querySelector('.child.blue').addEventListener('click',function(event){
+  alert(this.className);
+ },false);
+
+  document.querySelector('.parent-one.blue').addEventListener('click',function(event){
+  alert(this.className);
+ },false);
+
+   document.querySelector('.parent-two.blue').addEventListener('click',function(event){
+  alert(this.className);
+ },false);
+
+</script>
+
+
+</body>
+</html>

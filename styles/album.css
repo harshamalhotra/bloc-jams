@@ -43,7 +43,7 @@ body.album{
 }
 .song-item-number{
 	width: 5%;
-	min-width: 30px;
+	min-width: 40px;
 
 }
 .song-item-title{
@@ -73,6 +73,10 @@ body.album{
 	line-height: 28px;
 }
 
+a:visited{
+	color: rgba(85, 26, 139,0.5);
+
+}
 
 @media(max-width: 640px) and (min-width: 320px){
 	.album-view-details{

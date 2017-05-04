@@ -1,31 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Image Gallery</title>
+  <title>prac</title>
+  <style>
+    .whatever div{
+      min-height: 100px;
+      width: 30%;
+      display: inline;
+      
+    }
+    #red{background-color: red;}
+    #green{background-color: green;}
+    #blue{background-color: blue;}
+  </style>
 </head>
-<body>
-<h1>Snapshots</h1>
-<ul>
-  <li>
-    <a href="assets/images/album_covers/02.png" onclick="showPic(this);return false;" title="A lonely girl">One girl</a>
-  </li>
-  <li>
-    <a href="assets/images/album_covers/03.png" onclick="showPic(this);return false;" title="Happy kids">Take a dive</a>
-  </li>
-  <li>
-    <a href="assets/images/album_covers/11.png" onclick="showPic(this);return false;" title="Sun">Sunset</a>
-  </li>
-  <li>
-    <a href="assets/images/album_covers/09.png" onclick="showPic(this);return false;" title="Mountains">To reach heights</a>
-  </li>
-</ul>
-<img id="placeholder" src="assets/images/album_covers/01.png" alt="purple lants" />
-</body>
-<script type="text/javascript">
-  function showPic(whichpic){
-    var source=whichpic.getAttribute("href");
-    var placeholder=document.getElementById("placeholder");
-    placeholder.setAttribute("src",source);
-  }
+<body><h1>Prac</h1>
+
+<div class="whatever">
+  <span id="red"></div>
+  <div id="green"></div>
+  <div id="blue"></div>
+</div>
+
+
 </script>
+</body>
 </html>

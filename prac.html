@@ -1,28 +1,27 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <title>prac</title>
+  <meta charset="utf-8">
+  <title>ready demo</title>
   <style>
-    .whatever div{
-      min-height: 100px;
-      width: 30%;
-      display: inline;
-      
-    }
-    #red{background-color: red;}
-    #green{background-color: green;}
-    #blue{background-color: blue;}
+  p {
+    color: red;
+  }
   </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script>
+  $(function(){
+    $("p").text("The DOM is now loaded ");
+  });
+
+ 
+  </script>
+ 
 </head>
-<body><h1>Prac</h1>
-
-<div class="whatever">
-  <span id="red"></div>
-  <div id="green"></div>
-  <div id="blue"></div>
-</div>
-
-
-</script>
+<body>
+ 
+<p>Not loaded yet.</p>
+ 
+ 
 </body>
 </html>

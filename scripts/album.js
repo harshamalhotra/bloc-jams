@@ -38,7 +38,7 @@ var createSongRow = function(songNumber, songName, songLength) {
       
       + '  <td class="song-item-number" data-song-number="'+songNumber+'">'+songNumber+'</td>'
       + '  <td class="song-item-title">' + songName + '</td>'
-      + '  <td class="song-item-duration">' + songLength + '</td>'
+      + '  <td class="song-item-duration">' + filterTimeCode(songLength) + '</td>'
       + '</tr>'
       ;
  
@@ -196,6 +196,7 @@ var setCurrentAlbum = function(album) {
     $('.currently-playing .artist-name').text(currentAlbum.artist);
     $('.currently-playing .artist-song-mobile').text(currentSongFromAlbum.title+" - "+currentAlbum.artist);
     $('.main-controls .play-pause').html(playerBarPauseButton);
+    setTotalTimeInPlayerBar();
  };
 
 var togglePlayFromPlayerBar=function(){
@@ -234,6 +235,7 @@ var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
     var percentageString = offsetXPercent + '%';
     $seekBar.find('.fill').width(percentageString);
     $seekBar.find('.thumb').css({left: percentageString});
+    setCurrentTimeInPlayerBar();
  };
 
  var setupSeekBars = function() {
@@ -286,8 +288,37 @@ var updateSeekPercentage = function($seekBar, seekBarFillRatio) {
 
  };
 
-
+var  setCurrentTimeInPlayerBar=function(currentTime){
+    var timer=buzz.toTimer(currentSoundFile.getTime());
+    var a= $('.current-time').text(timer);
+    
+    return a;
+};
  
+var setTotalTimeInPlayerBar=function(totalTime){
+
+    var timer = currentSoundFile.getDuration();
+
+    var a= $('.total-time ').text(timer);
+    return a;
+};
+
+var filterTimeCode=function(timeInSeconds){
+    var minutes = Math.floor(time / 60);
+
+
+  
+    var time = parseFloat(timeInSeconds);
+    var minutes=Math.floor(time/60);
+    var seconds1=Math.floor(time%60);
+    var seconds=seconds1.toString();
+    if(seconds.length<2){
+        seconds="0"+seconds;
+    }
+    var a =minutes+":"+seconds;
+    return a;
+};
+
 
 
 var playButtonTemplate='<a class="album-song-button"><span class="ion-play"></span></a>';
